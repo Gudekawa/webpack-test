@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "./node_modules/.bin/webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/jeffreyberryethika/webpack-test#readme",
   "devDependencies": {
+    "extract-text-webpack-plugin": "^2.1.0",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
   }
 }
