@@ -1,10 +1,12 @@
 "use strict";
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = [
   {
     test: /\.(js|jsx)$/,
     exclude: [/node_modules/],
-    loader: 'babel-loader'
+    use: 'babel-loader'
   },
   {
     test: /\.css$/,
@@ -16,15 +18,13 @@ module.exports = [
   },
   {
     test: /\.(sass|scss)$/,
-    loaders: [
-      'style-loader',
-      'css-loader',
-      'resolve-url-loader',
-      'sass-loader?sourceMap'
-    ]
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: 'css-loader!sass-loader',
+    }),
   },
   {
     test: /\.(eot|svg|ttf|woff|woff2)$/,
-    loader: 'file?name=public/fonts/[name].[ext]'
+    use: 'file?name=public/fonts/[name].[ext]'
   },
 ];

@@ -5,6 +5,7 @@
  */
 import moment from 'moment';
 import '../scss/style.scss';
+import '../css/main.css';
 
 /**
  * require = no hoisting, runs when encountered in bundle (cite:[1])

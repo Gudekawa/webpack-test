@@ -24,8 +24,10 @@ const bundleFiles = {
 const config = {
   entry: bundleFiles.js,
   output: {
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    // filename: '[chunkhash].js',
+    // chunkFilename: '[chunkhash].js',
   },
   resolve: {
     alias: {
@@ -41,7 +43,7 @@ const config = {
       jQuery: "jquery",
     }),
     new ExtractTextPlugin({
-      filename: '[name].bundle.css',
+      filename: 'bundle.css',
       allChunks: true,
     }),
     new webpack.optimize.OccurrenceOrderPlugin,
