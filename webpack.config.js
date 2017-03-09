@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
 
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const loaders = require('./webpack.loaders');
 
 const bundleFiles = {
   js: [
@@ -10,23 +11,15 @@ const bundleFiles = {
     './node_modules/bootstrap/dist/js/bootstrap.js',
     './node_modules/moment/moment.js',
     './node_modules/moment/min/locales.js',
-    './node_modules/braintree/lib/braintree.js',
-    './src/js/app.js'
+    './src/js/app.js',
   ],
-  css: [
+  styles: [
     './node_modules/bootstrap/dist/css/bootstrap-theme.css',
     './node_modules/bootstrap/dist/css/bootstrap.css',
-    './node_modules/animate.css/animate.css'
+    './node_modules/animate.css/animate.css',
+    './src/scss/style.scss',
   ]
 };
-
-const loaders = [
-  {
-    test: /\.js?$/,
-    exclude: /node_modules/,
-    loader: "babel-loader"
-  }
-];
 
 const config = {
   entry: bundleFiles.js,
@@ -37,7 +30,7 @@ const config = {
   resolve: {
     alias: {
       jquery: "jquery/src/jquery",
-      _: "lodash/"
+      _: "lodash/",
     }
   },
   module: {loaders},
@@ -47,14 +40,19 @@ const config = {
       _: "lodash",
       jQuery: "jquery",
     }),
-    new webpack.optimize.OccurrenceOrderPlugin
+    new ExtractTextPlugin({
+      filename: '[name].bundle.css',
+      allChunks: true,
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin,
+    new webpack.optimize.UglifyJsPlugin,
   ],
-  devServer: {
-    contentBase: [
-      "./",
-      "dist"
-    ]
-  }
-}
+};
+
+/**
+ *  Shows the error caused from depreciated parseQuery() method. Should be
+ *  replaced with getOptions() on next release of loader-utils
+ */
+process.traceDeprecation = true;
 
 module.exports = config;

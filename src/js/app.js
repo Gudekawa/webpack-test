@@ -1,18 +1,19 @@
-'use strict';
+"use strict";
 
 /**
  * import = gets hoisted, runs at beginning of bundle (cite:[1])
  */
-// import moment from 'moment';
+import moment from 'moment';
+import '../scss/style.scss';
 
 /**
  * require = no hoisting, runs when encountered in bundle (cite:[1])
  */
-const moment = require('moment');
+// const moment = require('moment');
 
 function doSomething() {
   var div = document.createElement('div');
-  div.innerHTML = _.join(['It', 'is', 'now:', moment()], ' ');
+  div.innerHTML = _.join(['Timestamp', '=', moment().format('MMMM Do YYYY, h:mm:ss a')], ' ');
   return div;
 }
 
