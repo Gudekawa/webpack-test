@@ -1,27 +1,33 @@
 {
   "name": "webpack-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "main": "src/js/app.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.config.js"
+    "build": "./node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors",
+    "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeffreyberryethika/webpack-test.git"
+    "url": "https://github.com/jeffreyberryethika/webpack-test.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "jeffreyberryethika <jeffrey@ethika.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jeffreyberryethika/webpack-test/issues"
   },
   "homepage": "https://github.com/jeffreyberryethika/webpack-test#readme",
   "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
     "extract-text-webpack-plugin": "^2.1.0",
-    "webpack": "^2.2.1"
+    "imports-loader": "^0.7.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "bootstrap": "^3.3.7",
+    "braintree": "^2.0.2",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.1"
