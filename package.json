@@ -5,6 +5,9 @@
   "scripts": {
     "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors",
     "build:prod": "./node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors -p",
+    "production": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js -p",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:prod": "npm run build:prod -- --watch",
     "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
@@ -31,8 +34,11 @@
     "babel-preset-es2016": "^6.22.0",
     "css-loader": "^0.26.4",
     "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "glob": "^7.1.1",
     "imports-loader": "^0.7.1",
     "node-sass": "^4.5.0",
+    "purifycss-webpack": "^0.5.0",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.2",
