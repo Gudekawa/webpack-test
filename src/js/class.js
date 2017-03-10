@@ -1,4 +1,4 @@
-class someClass {
+export class someClass {
   constructor() {
     console.info('someClass works!');
 
@@ -7,5 +7,3 @@ class someClass {
     console.info(numbers);
   }
 }
-
-new someClass();

@@ -8,22 +8,6 @@ var PurifyCSSPlugin = require('purifycss-webpack');
 var rules = require('./webpack.rules');
 var inProduction = (process.env.NODE_ENV === 'production');
 
-var bundleFiles = {
-  js: [
-    './node_modules/jquery/src/jquery.js',
-    './node_modules/bootstrap/dist/js/bootstrap.js',
-    './node_modules/moment/moment.js',
-    './node_modules/moment/min/locales.js',
-    './src/js/app.js',
-  ],
-  styles: [
-    './node_modules/bootstrap/dist/css/bootstrap-theme.css',
-    './node_modules/bootstrap/dist/css/bootstrap.css',
-    './node_modules/animate.css/animate.css',
-    './src/scss/style.scss',
-  ]
-};
-
 var config = {
   entry: {
     app: [
@@ -49,7 +33,7 @@ var config = {
 }
 
 if (inProduction) {
-  simpleConfig.plugins.push(
+  config.plugins.push(
     new webpack.optimize.UglifyJsPlugin()
   );
 }
