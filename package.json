@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "main": "src/js/app.js",
   "scripts": {
-    "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors",
-    "build:prod": "./node_modules/.bin/webpack --config webpack.config.js --progress --profile --colors -p",
-    "production": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js -p",
-    "watch:dev": "npm run build:dev -- --watch",
-    "watch:prod": "npm run build:prod -- --watch",
+    "dev": "./node_modules/.bin/webpack --config webpack.config.js",
+    "prod": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js -p",
+    "watch:dev": "npm run dev -- --watch",
+    "watch:prod": "npm run prod -- --watch",
     "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
@@ -31,7 +30,6 @@
     "babel-core": "^6.23.1",
     "babel-loader": "^6.4.0",
     "babel-preset-env": "^1.2.1",
-    "babel-preset-es2016": "^6.22.0",
     "css-loader": "^0.26.4",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
