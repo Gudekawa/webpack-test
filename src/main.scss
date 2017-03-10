@@ -1,0 +1,16 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap/dist/css/bootstrap-theme.css';
+@import '~animate.css/animate.css';
+$center: center;
+
+body {
+  text-align: $center;
+
+  .pic {
+    background: url('./images/foo.png');
+  }
+
+  .bob {
+    color: blue;
+  }
+}

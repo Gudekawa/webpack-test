@@ -3,21 +3,17 @@
 /**
  * import = gets hoisted, runs at beginning of bundle (cite:[1])
  */
-import moment from 'moment';
-import '../scss/style.scss';
+ import actions from './js/doSomething';
+ import someClass from './js/class';
+ import './css/main.css';
+ import './main.scss';
 
 /**
  * require = no hoisting, runs when encountered in bundle (cite:[1])
  */
 // const moment = require('moment');
 
-function doSomething() {
-  var div = document.createElement('div');
-  div.innerHTML = _.join(['Timestamp', '=', moment().format('MMMM Do YYYY, h:mm:ss a')], ' ');
-  return div;
-}
-
-document.body.appendChild(doSomething());
+document.body.appendChild(actions.doSomething());
 
 /**
  *  Citations:

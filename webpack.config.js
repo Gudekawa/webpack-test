@@ -1,11 +1,14 @@
 "use strict";
 
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const loaders = require('./webpack.loaders');
+var path = require('path');
+var glob = require('glob');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var PurifyCSSPlugin = require('purifycss-webpack');
+var rules = require('./webpack.rules');
+var inProduction = (process.env.NODE_ENV === 'production');
 
-const bundleFiles = {
+var bundleFiles = {
   js: [
     './node_modules/jquery/src/jquery.js',
     './node_modules/bootstrap/dist/js/bootstrap.js',
@@ -21,33 +24,35 @@ const bundleFiles = {
   ]
 };
 
-const config = {
-  entry: bundleFiles.js,
+var config = {
+  entry: {
+    app: [
+      './src/app.js',
+      './src/main.scss'
+    ]
+  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, './dist'),
+    filename: '[name].js'
   },
-  resolve: {
-    alias: {
-      jquery: "jquery/src/jquery",
-      _: "lodash/",
-    }
-  },
-  module: {loaders},
+  module: {rules},
   plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      _: "lodash",
-      jQuery: "jquery",
+    new ExtractTextPlugin('[name].css'),
+    new PurifyCSSPlugin({
+      paths: glob.sync(path.join(__dirname, './index.html')),
+      minimize: inProduction
     }),
-    new ExtractTextPlugin({
-      filename: '[name].bundle.css',
-      allChunks: true,
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin,
-    new webpack.optimize.UglifyJsPlugin,
-  ],
-};
+    new webpack.LoaderOptionsPlugin({
+      minimize: inProduction
+    })
+  ]
+}
+
+if (inProduction) {
+  simpleConfig.plugins.push(
+    new webpack.optimize.UglifyJsPlugin()
+  );
+}
 
 /**
  *  Shows the error caused from depreciated parseQuery() method. Should be
