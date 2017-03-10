@@ -5,7 +5,6 @@
  */
  import actions from './js/doSomething';
  import { someClass } from './js/class';
- import './css/main.css';
  import './main.scss';
 
 /**
