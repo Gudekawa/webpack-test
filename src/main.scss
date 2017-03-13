@@ -1,7 +1,10 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~bootstrap/dist/css/bootstrap-theme.css';
 @import '~animate.css/animate.css';
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
 @import './css/main.css';
+
 $center: center;
 
 body {

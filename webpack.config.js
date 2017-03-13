@@ -5,6 +5,7 @@ var glob = require('glob');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var PurifyCSSPlugin = require('purifycss-webpack');
+var HtmlPlugin = require('html-webpack-plugin');
 var rules = require('./webpack.rules');
 var inProduction = (process.env.NODE_ENV === 'production');
 
@@ -28,6 +29,10 @@ var config = {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: inProduction
+    }),
+    new HtmlPlugin({
+      filename: 'index.html',
+      template: 'index.html'
     })
   ]
 }
