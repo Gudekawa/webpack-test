@@ -11,10 +11,18 @@ var rules = [
     })
   },
   {
-    test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
+    test: /\.(png|jpe?g|gif|svg)$/,
     loader: 'file-loader',
     options: {
       name: 'images/[name][hash].[ext]',
+      limit: 10000
+    }
+  },
+  {
+    test: /\.(eot|ttf|woff|woff2)$/,
+    loader: 'file-loader',
+    options: {
+      name: 'fonts/[name][hash].[ext]',
       limit: 10000
     }
   },
