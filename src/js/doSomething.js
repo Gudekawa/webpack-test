@@ -5,16 +5,12 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 function doSomething() {
-  var div = document.createElement('div');
-  div.innerHTML = _.join(['Timestamp', '=', moment().format('MMMM Do YYYY, h:mm:ss a')], ' ');
-  return div;
-}
-
-function logSomething(message) {
-  console.info(message);
+  $('body').prepend(_.join(['Timestamp', '=', moment().format('MMMM Do YYYY, h:mm:ss a')], ' '));
 }
 
 export default {
+  $: $,
+  _: _,
+  moment: moment,
   doSomething: doSomething,
-  logSomething: logSomething
 };

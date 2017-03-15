@@ -7,6 +7,8 @@
  import { someClass } from './js/class';
  import './main.scss';
 
+require('./js/plugins/plugin1.js')(actions.$)
+
 /**
  * require = no hoisting, runs when encountered in bundle (cite:[1])
  */
@@ -14,7 +16,8 @@
 
 new someClass();
 
-document.body.appendChild(actions.doSomething());
+actions.$('body').append(actions.doSomething());
+console.log(actions.$.Hello('Jeff'));
 
 /**
  *  Citations:

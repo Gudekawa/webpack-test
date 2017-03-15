@@ -33,7 +33,19 @@ var rules = [
   {
     test: /\.js$/,
     exclude: /node_modules/,
-    use: "babel-loader",
+    use: [
+      {
+        loader: 'jshint-loader',
+        options: {
+          camelcase: true,
+          emitErrors: false,
+          failOnHint: false
+        }
+      },
+      {
+        loader: 'babel-loader'
+      }
+    ],
   },
 ];
 

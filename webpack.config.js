@@ -13,15 +13,22 @@ var config = {
   entry: {
     app: [
       './src/app.js',
-      './src/main.scss'
+      './src/main.scss',
+      './src/js/jQuery.js'
     ]
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    library: '$',
+    libraryTarget: 'var'
   },
-  module: {rules},
+  module: {rules, noParse: /jquery/},
   plugins: [
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'window.$': 'jquery'
+    }),
     new ExtractTextPlugin('[name].css'),
     new PurifyCSSPlugin({
       paths: glob.sync(path.join(__dirname, './index.html')),
