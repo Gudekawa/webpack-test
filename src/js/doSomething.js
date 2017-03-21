@@ -1,6 +1,8 @@
 "use strict";
 
 import moment from 'moment';
+import 'datatables.net';
+import 'datatables.net-colreorder';
 import _ from 'lodash';
 import $ from 'jquery';
 
@@ -13,6 +15,12 @@ function doSomething() {
 function logSomething(message) {
   console.info(message);
 }
+
+$(document).ready(function() {
+  $('#example').DataTable({
+    colReorder: true
+  });
+});
 
 export default {
   doSomething: doSomething,
